@@ -1,0 +1,6 @@
+.collection {
+  height: 500px;
+  width: 500px;
+  margin-top: 80px;
+  overflow: auto
+}
