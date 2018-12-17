@@ -4,7 +4,7 @@ import './../css/nav.css';
 
 const Nav = () => {
     return(
-      <Navbar brand="Redux Todos"/>
+      <Navbar brand="Unstated Todos"/>
     )
 }
 
