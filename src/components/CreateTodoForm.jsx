@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import {Button} from 'react-materialize';
 
-
 export default class CreateTodoForm extends Component {
   constructor() {
     super();
     this.state = {
-      content: ""
+      content: "",
+      increment: null
     }
   }
-
 
   todoFormStyle = {
     border: "solid black 1px",
@@ -18,21 +17,25 @@ export default class CreateTodoForm extends Component {
     margin: "80px 30px 0px 30px",
     textAlign: "center"
   }
+  componentDidMount(){
+    const {increment} = this.props;
+    this.setState({increment});
+  }
 
   handleChange = (key, e) => {
     this.setState({
       [key]: e.target.value
-    }, () => {
-      console.log(this.state.content);
     })
   }
-  componentDidMount(){
-  }
-
   onButtonClick = () => {
     const {addTodo} = this.props.container;
-    addTodo(this.state);
-
+    this.props.container.incrementAdd(() => {
+      const {increment} = this.props.container.state;
+      console.log(increment)
+      this.setState({increment}, () => {
+        addTodo(this.state);
+      });
+    });
   }
 
   textAreaStyle={

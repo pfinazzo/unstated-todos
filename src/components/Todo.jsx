@@ -1,24 +1,37 @@
-import React, {Component} from 'react';
-import {CollectionItem} from 'react-materialize';
+import React, { Component } from 'react';
+import { CollectionItem, Button } from 'react-materialize';
 
 export default class Todo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ""
+      content: "",
+      increment: 0
     }
   }
 
-  componentDidMount(){
-    const {todo} = this.props;
-    console.log(this.props)
-    const {content} = todo;
-    this.setState({content})
+  componentWillMount() {
+    const { todo } = this.props;
+    const { content } = todo;
+    this.setState({ content }, () => {
+      this.setState({
+        increment: this.props.container.state.increment
+      }, () => {
+        console.log(this.state.increment);
+      })
+    });
   }
 
-  render(){
-    return(
-      <CollectionItem>{this.state.content}</CollectionItem>
+  buttonClick = () => {
+    this.props.container.deleteTodo(this.state.increment)
+  }
+
+  render() {
+    return (
+      <CollectionItem>
+        <p>{this.state.content}</p>
+        <Button waves="red" onClick={this.buttonClick}>Remove</Button>
+      </CollectionItem>
     )
   }
 }

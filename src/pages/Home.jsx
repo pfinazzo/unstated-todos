@@ -6,17 +6,12 @@ import { Subscribe } from 'unstated';
 
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: []
-    }
-  }
 
   wrapStyle = {
     display: "flex",
     justifyContent: "center",
   }
+
 
   render() {
     return (
