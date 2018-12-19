@@ -4,7 +4,7 @@ import {getTodos, saveTodos} from './../utilities/todoService';
 export default class HomeContainer extends Container {
   state = {
     todos: [],
-    increment: 0
+    id: 0
   }
   
   addTodo = (todo) => {
@@ -29,9 +29,9 @@ export default class HomeContainer extends Container {
     }
   }
 
-  incrementAdd = (cb) => {
+  idAdd = (cb) => {
     this.setState({
-      increment: this.state.increment + 1
+      id: this.state.id + 1
     }, () => {
       cb();
     })

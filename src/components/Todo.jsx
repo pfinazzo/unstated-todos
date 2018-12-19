@@ -6,7 +6,7 @@ export default class Todo extends Component {
     super(props);
     this.state = {
       content: "",
-      increment: 0
+      id: 0
     }
   }
 
@@ -15,9 +15,9 @@ export default class Todo extends Component {
     const { content } = todo;
     this.setState({ content }, () => {
       this.setState({
-        increment: this.props.container.state.increment
+        id: this.props.container.state.id
       }, () => {
-        console.log(this.state.increment);
+        console.log(this.state.id);
       })
     });
   }

@@ -6,7 +6,7 @@ export default class CreateTodoForm extends Component {
     super();
     this.state = {
       content: "",
-      increment: null
+      id: null
     }
   }
 
@@ -18,8 +18,8 @@ export default class CreateTodoForm extends Component {
     textAlign: "center"
   }
   componentDidMount(){
-    const {increment} = this.props;
-    this.setState({increment});
+    const {id} = this.props;
+    this.setState({id});
   }
 
   handleChange = (key, e) => {
@@ -29,10 +29,9 @@ export default class CreateTodoForm extends Component {
   }
   onButtonClick = () => {
     const {addTodo} = this.props.container;
-    this.props.container.incrementAdd(() => {
-      const {increment} = this.props.container.state;
-      console.log(increment)
-      this.setState({increment}, () => {
+    this.props.container.idAdd(() => {
+      const {id} = this.props.container.state;
+      this.setState({id}, () => {
         addTodo(this.state);
       });
     });
