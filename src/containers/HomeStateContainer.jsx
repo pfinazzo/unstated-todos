@@ -16,11 +16,9 @@ export default class HomeContainer extends Container {
     }
     if (!found){
       this.setState((prevState) => {
-        return {todos: [...prevState.todos, todo]} // function just to try it out! :D
+        return {todos: [...prevState.todos, todo]} 
       }, () => {
-        // push to local storage
         saveTodos(this.state.todos, () => {
-          // then pull
           this.pullTodos(() => {
             console.log(this.state.todos);
           });
@@ -40,20 +38,15 @@ export default class HomeContainer extends Container {
   pullTodos = (cb) => {
     var todos = getTodos();
     this.setState({todos}, () => {
-      console.log('pulled todos', this.state.todos);
       cb();
     });
   }
 
   deleteTodo = (content) => {
-    console.log('delete from store content', content);
     var todos = this.state.todos.filter(todo => {
-      console.log('match = ', todo.content === content, todo.content, content);
       return todo.content !== content;
     })
-    this.setState({todos}, () => {
-      console.log ('after delete', this.state.todos);      
-    })
+    this.setState({todos})
   }
 
 }

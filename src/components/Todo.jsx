@@ -16,8 +16,6 @@ export default class Todo extends Component {
     this.setState({ content }, () => {
       this.setState({
         id: this.props.container.state.id
-      }, () => {
-        console.log(this.state.id);
       })
     });
   }

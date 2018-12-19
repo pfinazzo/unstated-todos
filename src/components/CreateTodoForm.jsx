@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'react-materialize';
+import { Button } from 'react-materialize';
 
 export default class CreateTodoForm extends Component {
   constructor() {
@@ -17,9 +17,10 @@ export default class CreateTodoForm extends Component {
     margin: "80px 30px 0px 30px",
     textAlign: "center"
   }
-  componentDidMount(){
-    const {id} = this.props;
-    this.setState({id});
+
+  componentDidMount() {
+    const { id } = this.props;
+    this.setState({ id });
   }
 
   handleChange = (key, e) => {
@@ -27,17 +28,18 @@ export default class CreateTodoForm extends Component {
       [key]: e.target.value
     })
   }
+  
   onButtonClick = () => {
-    const {addTodo} = this.props.container;
+    const { addTodo } = this.props.container;
     this.props.container.idAdd(() => {
-      const {id} = this.props.container.state;
-      this.setState({id}, () => {
+      const { id } = this.props.container.state;
+      this.setState({ id }, () => {
         addTodo(this.state);
       });
     });
   }
 
-  textAreaStyle={
+  textAreaStyle = {
     height: "400px",
     midWidth: "100%"
   }
@@ -45,7 +47,7 @@ export default class CreateTodoForm extends Component {
   render() {
     return (
       <div style={this.todoFormStyle}>
-        <textarea style={this.textAreaStyle} onChange={e => this.handleChange("content", e) } value={this.state.content}  type="text"/>
+        <textarea style={this.textAreaStyle} onChange={e => this.handleChange("content", e)} value={this.state.content} type="text" />
         <Button onClick={this.onButtonClick}>Add</Button>
       </div>
     )

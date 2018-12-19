@@ -14,24 +14,21 @@ export default class TodosContainer extends Component {
 
   componentWillMount() {
     this.props.container.pullTodos(() => {
-      console.log('todos container will mount ', this.props.container.state.todos)
+      const {todos} = this.props.container.state;
+      this.setState({ todos });
     });
-    const {todos} = this.props.container.state;
-    this.setState({ todos });
   }
 
   componentDidUpdate(){
     const {todos} = this.props.container.state;
     if (this.state.todos.length !== todos.length){
       this.setState({todos}, () => {
-        console.log('todos container updated  ', this.state.todos);
         saveTodos(this.state.todos);
       })
     }
   }
 
   render() {
-    console.log('rendered', this.state.todos);
     return (
       <Collection>
         {this.state.todos.map(todo => {
