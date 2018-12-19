@@ -8,17 +8,25 @@ export default class HomeContainer extends Container {
   }
   
   addTodo = (todo) => {
-    this.setState((prevState) => {
-      return {todos: [...prevState.todos, todo]} // function just to try it out! :D
-    }, () => {
-      // push to local storage
-      saveTodos(this.state.todos, () => {
-        // then pull
-        this.pullTodos(() => {
-          console.log(this.state.todos);
+    let found = false;
+    for (let i = 0; i < this.state.todos.length; i++){
+      if (this.state.todos[i].content === todo.content){
+        return found = true;
+      }
+    }
+    if (!found){
+      this.setState((prevState) => {
+        return {todos: [...prevState.todos, todo]} // function just to try it out! :D
+      }, () => {
+        // push to local storage
+        saveTodos(this.state.todos, () => {
+          // then pull
+          this.pullTodos(() => {
+            console.log(this.state.todos);
+          });
         });
-      });
-    })
+      })
+    }
   }
 
   incrementAdd = (cb) => {
