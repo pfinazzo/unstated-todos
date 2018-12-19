@@ -6,20 +6,13 @@ export default class Todo extends Component {
     super(props);
     this.state = {
       content: "",
-      increment: 0
     }
   }
 
   componentWillMount() {
     const { todo } = this.props;
     const { content } = todo;
-    this.setState({ content }, () => {
-      this.setState({
-        increment: this.props.container.state.increment
-      }, () => {
-        console.log(this.state.increment);
-      })
-    });
+    this.setState({ content });
   }
 
   buttonClick = () => {
