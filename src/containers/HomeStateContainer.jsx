@@ -6,10 +6,10 @@ export default class HomeContainer extends Container {
     todos: [],
     increment: 0
   }
-
+  
   addTodo = (todo) => {
-    this.setState({
-      todos: [...this.state.todos, todo]
+    this.setState((prevState) => {
+      return {todos: [...prevState.todos, todo]} // function just to try it out! :D
     }, () => {
       // push to local storage
       saveTodos(this.state.todos, () => {
@@ -32,18 +32,20 @@ export default class HomeContainer extends Container {
   pullTodos = (cb) => {
     var todos = getTodos();
     this.setState({todos}, () => {
+      console.log('pulled todos', this.state.todos);
       cb();
     });
   }
 
-  deleteTodo = (increment) => {
-    console.log('delete from store increment', increment);
+  deleteTodo = (content) => {
+    console.log('delete from store content', content);
     var todos = this.state.todos.filter(todo => {
-      console.log(todo.increment, increment);
-      return todo.increment !== increment;
+      console.log('match = ', todo.content === content, todo.content, content);
+      return todo.content !== content;
     })
-    console.log ('after delete', todos);
-    this.setState({todos})
+    this.setState({todos}, () => {
+      console.log ('after delete', this.state.todos);      
+    })
   }
 
 }

@@ -23,7 +23,7 @@ export default class Todo extends Component {
   }
 
   buttonClick = () => {
-    this.props.container.deleteTodo(this.state.increment)
+    this.props.container.deleteTodo(this.state.content)
   }
 
   render() {

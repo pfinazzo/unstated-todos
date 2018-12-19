@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 import {Collection} from 'react-materialize';
 import './../css/collection.css';
-import {getTodos, saveTodos} from './../utilities/todoService';
+import {saveTodos} from './../utilities/todoService';
 
 export default class TodosContainer extends Component {
   constructor() {
