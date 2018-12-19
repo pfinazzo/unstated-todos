@@ -13,8 +13,8 @@ export default class TodosContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.container.pullTodos(() => {
-      const {todos} = this.props.container.state;
+    this.props.container.pullTodos().then((stateContainerTodos) => {
+      const {todos} = stateContainerTodos;
       this.setState({ todos });
     });
   }

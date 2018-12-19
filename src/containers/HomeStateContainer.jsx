@@ -19,27 +19,31 @@ export default class HomeContainer extends Container {
         return {todos: [...prevState.todos, todo]} 
       }, () => {
         saveTodos(this.state.todos, () => {
-          this.pullTodos(() => {
-            console.log(this.state.todos);
+          this.pullTodos().then((containerStateTodos) => {
+            console.log('pulled from local storage', containerStateTodos);
           });
         });
       })
     }
   }
 
-  idAdd = (cb) => {
-    this.setState({
-      id: this.state.id + 1
-    }, () => {
-      cb();
+  idAdd = () => {
+    return new Promise((resolve, reject) => {
+      this.setState({
+        id: this.state.id + 1
+      }, () => {
+        resolve(this.state);
+      })
     })
   }
 
-  pullTodos = (cb) => {
-    var todos = getTodos();
-    this.setState({todos}, () => {
-      cb();
-    });
+  pullTodos = () => {
+    return new Promise((resolve, reject) => {
+      var todos = getTodos();
+      this.setState({todos}, () => {
+        resolve(this.state);
+      });
+    })
   }
 
   deleteTodo = (content) => {
