@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TodosContainer from '../components/TodosContainer';
 import CreateTodoForm from '../components/CreateTodoForm';
 import HomeStateContainer from './../containers/HomeStateContainer';
 import { Subscribe } from 'unstated';
+import TodosWrapper from '../components/TodosWrapper';
 
 
 export default class Home extends Component {
@@ -19,7 +19,7 @@ export default class Home extends Component {
         {container => (
           <div style={this.wrapStyle}>
             <CreateTodoForm container={container} />
-            <TodosContainer container={container} />
+            <TodosWrapper container={container} />
           </div>
         )}
       </Subscribe>

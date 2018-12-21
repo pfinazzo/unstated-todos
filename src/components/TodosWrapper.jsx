@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 import {Collection} from 'react-materialize';
 import './../css/collection.css';
-import {saveTodos} from './../utilities/todoService';
+import {saveTodos} from '../utilities/todoService';
 
 export default class TodosContainer extends Component {
   constructor() {
@@ -13,7 +13,8 @@ export default class TodosContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.container.pullTodos().then((stateContainerTodos) => {
+    const {pullTodos} = this.props.container;
+    pullTodos().then((stateContainerTodos) => {
       const {todos} = stateContainerTodos;
       this.setState({ todos });
     });

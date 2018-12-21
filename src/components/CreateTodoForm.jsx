@@ -28,12 +28,11 @@ export default class CreateTodoForm extends Component {
       [key]: e.target.value
     })
   }
-
+z
   onButtonClick = () => {
-    const { addTodo } = this.props.container;
-    this.props.container.idAdd().then((containerState) => {
+    const { addTodo, idAdd } = this.props.container;
+    idAdd().then((containerState) => {
       const { id } = containerState;
-      console.log(id);
       this.setState({ id }, () => {
         addTodo(this.state);
       });
