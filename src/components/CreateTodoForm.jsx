@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-materialize';
+import './../css/text-area.css';
 
 export default class CreateTodoForm extends Component {
   constructor() {
@@ -15,8 +16,10 @@ export default class CreateTodoForm extends Component {
     height: "500px",
     width: "500px",
     margin: "80px 30px 0px 30px",
-    textAlign: "center"
+    textAlign: "center",
+    borderRadius: "25px"
   }
+
 
   componentDidMount() {
     const { id } = this.props;
@@ -28,7 +31,7 @@ export default class CreateTodoForm extends Component {
       [key]: e.target.value
     })
   }
-z
+  z
   onButtonClick = () => {
     const { addTodo, idAdd } = this.props.container;
     idAdd().then((containerState) => {
@@ -41,14 +44,23 @@ z
 
   textAreaStyle = {
     height: "400px",
-    midWidth: "100%"
+    midWidth: "100%",
+    borderRadius: "25px",
+    padding: "20px",
+    border: "solid grey 1px"
+  }
+
+  buttonDivStyle={
+    marginTop: "20px"
   }
 
   render() {
     return (
       <div style={this.todoFormStyle}>
         <textarea style={this.textAreaStyle} onChange={e => this.handleChange("content", e)} value={this.state.content} type="text" />
-        <Button onClick={this.onButtonClick}>Add</Button>
+        <div style={this.buttonDivStyle}>
+          <Button onClick={this.onButtonClick}>Add</Button>
+        </div>
       </div>
     )
   }

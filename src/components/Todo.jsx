@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CollectionItem, Button } from 'react-materialize';
+import './../css/btn.css';
 
 export default class Todo extends Component {
   constructor(props) {
@@ -24,11 +25,35 @@ export default class Todo extends Component {
     this.props.container.deleteTodo(this.state.content)
   }
 
+  todoWrapStyle = {
+    display: "flex",
+    justifyContent: "space-around",
+    marginTop: "20px",
+  }
+
+  btnWrapStyle = {
+    position: "relative",
+    display: "inline-block",
+    width: "75px",
+    marginTop: "8px"
+  }
+  contentWrapStyle = {
+    display: "flex",
+    flexFlow: "row wrap",
+    width: "100px",
+  }
+
   render() {
     return (
       <CollectionItem>
-        <p>{this.state.content}</p>
-        <Button waves="red" onClick={this.buttonClick}>Remove</Button>
+        <div style={this.todoWrapStyle}>
+          <div style={this.contentWrapStyle}>
+            <p>{this.state.content}</p>
+          </div>
+          <div style={this.btnWrapStyle}>
+            <Button waves="red" onClick={this.buttonClick}>Remove</Button>
+          </div>
+        </div>
       </CollectionItem>
     )
   }

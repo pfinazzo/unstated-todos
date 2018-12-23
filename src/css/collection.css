@@ -1,6 +1,10 @@
-.collection {
+.collection-wrap {
   height: 500px;
   width: 500px;
-  margin-top: 80px;
+  margin-top: 0px;
   overflow: auto
+}
+
+.collection {
+  margin-top: 80px;
 }
