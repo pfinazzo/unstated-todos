@@ -34,7 +34,7 @@ export default class Todo extends Component {
   btnWrapStyle = {
     position: "relative",
     display: "inline-block",
-    width: "75px",
+    width: "200px",
     marginTop: "8px"
   }
   contentWrapStyle = {
@@ -42,13 +42,17 @@ export default class Todo extends Component {
     flexFlow: "row wrap",
     width: "100px",
   }
+  paragraphStyle = {
+    width: "100%",
+    wordWrap: "break-word "
+  }
 
   render() {
     return (
       <CollectionItem>
         <div style={this.todoWrapStyle}>
           <div style={this.contentWrapStyle}>
-            <p>{this.state.content}</p>
+            <p style={this.paragraphStyle}>{this.state.content}</p>
           </div>
           <div style={this.btnWrapStyle}>
             <Button waves="red" onClick={this.buttonClick}>Remove</Button>
