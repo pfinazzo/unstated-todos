@@ -47,7 +47,8 @@ export default class CreateTodoForm extends Component {
     midWidth: "100%",
     borderRadius: "25px",
     padding: "20px",
-    border: "solid grey 1px"
+    border: "solid grey 1px",
+    resize: "none"
   }
 
   buttonDivStyle={
