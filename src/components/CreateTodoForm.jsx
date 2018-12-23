@@ -31,7 +31,7 @@ export default class CreateTodoForm extends Component {
       [key]: e.target.value
     })
   }
-  z
+  
   onButtonClick = () => {
     const { addTodo, idAdd } = this.props.container;
     idAdd().then((containerState) => {
