@@ -28,7 +28,8 @@ export default class Todo extends Component {
   todoWrapStyle = {
     display: "flex",
     justifyContent: "space-around",
-    marginTop: "20px",
+    marginTop: "10px",
+    marginBottom: "10px"
   }
 
   btnWrapStyle = {
