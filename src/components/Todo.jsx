@@ -7,7 +7,7 @@ export default class Todo extends Component {
     super(props);
     this.state = {
       content: "",
-      id: 0
+      id: null
     }
   }
 
@@ -35,7 +35,7 @@ export default class Todo extends Component {
   btnWrapStyle = {
     position: "relative",
     display: "inline-block",
-    width: "200px",
+    width: "150px",
     marginTop: "8px"
   }
   contentWrapStyle = {
