@@ -8,6 +8,8 @@ export default class HomeContainer extends Container {
 
 
   addTodo = (todo) => {
+    var {content} = todo;
+    todo.content = content.trim();
     let found = false;
     for (let i = 0; i < this.state.todos.length; i++) {
       if (this.state.todos[i].content === todo.content) {
