@@ -37,10 +37,12 @@ export default class CreateTodoForm extends Component {
     idAdd().then((containerState) => {
       const { id } = containerState;
       this.setState({ id }, () => {
-        addTodo(this.state);
-        this.setState({
-          content: ""
-        })
+        if (this.state.content.trim()){
+          addTodo(this.state);
+          this.setState({
+            content: ""
+          })
+        }
       });
     });
   }
