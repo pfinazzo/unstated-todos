@@ -6,3 +6,4 @@
 
 here are the [docs](https://github.com/jamiebuilds/unstated):
 
+check out the deployed version [here](https://pfinazzo.github.io/unstated-todos/);
